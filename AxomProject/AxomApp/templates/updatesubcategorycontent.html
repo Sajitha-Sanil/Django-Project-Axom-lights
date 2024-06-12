@@ -1,0 +1,94 @@
+{% extends 'aboutuspagecontent.html'%}
+{% load static %}
+{% get_static_prefix as dir %}
+{% block content %} 
+<!-- End Sidebar Modal -->
+
+                <div class="dashboard-innerbox">
+                            <div class="inner-page-sec">
+                              <div class="description-sec">
+                                <h2>Update Subcategory </h2>
+                                {% if messages %}
+                                                    {% for message in messages %}
+                                                      {% if message.tags == 'success' %}
+                                                        <div class="alert alert-success" role="alert">
+                                                          {{ message }}
+                                                        </div>
+                                                      {% elif message.tags == 'error' %}
+                                                        <div class="alert alert-danger" role="alert">
+                                                          {{ message }}
+                                                        </div>
+                                                      {% endif %}
+                                                    {% endfor %}
+                                                  {% endif %}
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="inner-card">
+                                            <div class="inner-card-body">
+                                                <div class="product-info">
+                                    
+                                                    
+                                                    <form id="form1" method="post" enctype="multipart/form-data" action="{% url 'update_sub_category' subcategory.slug %}">
+                                                      {% csrf_token %}
+                                                        <div class="product-group">
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Product Category:</label>
+                                                                    <select class="form-control" id="product-category" required name="category">
+                                                                        {% for category in categories %}
+                                                                        <option value="{{ category.slug }}" {% if category.slug == subcategory.category.slug %}selected{% endif %}>{{ category.product_category }}</option>
+                                                                        {% endfor %}
+                                                                      </select>
+                                                                  </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Product Sub-Category:</label>
+                                                                    <input type="text" class="form-control" required id="product-sub-category" placeholder="Add sub-category" name="name" value="{{ subcategory.name }}">
+                                                                  </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Sub-Category Description:</label>
+                                                                    <textarea class="form-control" id="product-sub-category-description" placeholder="Add sub-category description" rows="8" name="description">{{ subcategory.description }}</textarea>
+                                                                  </div>
+                                                            </div>
+                                                          </div>
+                                                           
+                                                            <!-- Add the hidden input field for subcategory ID -->
+                                                            <input type="hidden" name="subcategory_id" value="{{ subcategory.slug }}">
+                                                          <div class="row">
+                                                            <div class="col-sm-12 text-end">
+                                                                <button class="btn btn-secondary" type="submit" >Update</button>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                      </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row bg-row">
+                                      <div class="col-md-5 col-lg-5 pocket-help">
+                                          <h2>Ask pocket Friendly for Help 24/7</h2>
+                                          <h6>Get In Touch : </h6>
+                                        
+                                          <div class="number-block"> <a href="tel:+ +971 585893348"> +971585893348 </a>  
+                                             </div>
+                                          </div>
+                                  </div>
+                                  </div>
+                            
+                
+                     
+                </div>
+                </div>
+        </div>
+      </section>
+                                    {% endblock %}

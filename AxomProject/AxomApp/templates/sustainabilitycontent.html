@@ -1,0 +1,136 @@
+{% extends 'aboutuspagecontent.html'%}
+{% load static %}
+{% get_static_prefix as dir %}
+{% block content %} 
+
+<div class="dashboard-innerbox">
+    <div class="inner-page-sec">
+      <div class="description-sec">
+        <h2>Update Sustainability Page Content</h2>
+        {% if messages %}
+                            {% for message in messages %}
+                              {% if message.tags == 'success' %}
+                                <div class="alert alert-success" role="alert">
+                                  {{ message }}
+                                </div>
+                              {% elif message.tags == 'error' %}
+                                <div class="alert alert-danger" role="alert">
+                                  {{ message }}
+                                </div>
+                              {% endif %}
+                            {% endfor %}
+                          {% endif %}
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="inner-card">
+                    <div class="inner-card-body">
+                        <div class="product-info">
+                            <h5> Update Sustainability Page </h5>
+                            
+                            <form id="form1" method="post" enctype="multipart/form-data" action="{% url 'update_sustainability_content' %}">
+                                {% csrf_token %}
+                                <div class="product-group">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="mb-3">
+                                                <label for="title1" class="mb-2">First Content Title:</label><br>
+                                                <input type="text" class="form-control" id="title1" name="title1" value="{{ sustain.title1 }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="mb-3">
+                                                <label for="content11">First Paragraph of the First Content:</label>
+                                                <textarea class="form-control" id="content11" rows="5" name="content11">{{ sustain.content11 }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="mb-3">
+                                                <label for="content12">Second Paragraph of the First Content:</label>
+                                                <textarea class="form-control" id="content12" rows="5" name="content12">{{ sustain.content12 }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row"> 
+                                      <div class="col-sm-12">
+                                        <div class="mb-3">
+                                          <label for="siteDescriptionInput" class="mb-2" >First Content Image:</label><br>
+                                          <input type="file" class="form-control form-control-file" id="image1" name="image1">
+                                          <p class="mt-2">Currently: <span class="text-info">{{ sustain.image1 }}</span></p>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  <div class="row"> 
+                                    <div class="col-sm-12">
+                                      <div class="mb-3">
+                                        <label for="siteDescriptionInput">Second Content Title:</label>
+                                        <input type="text" class="form-control" id="title2" name="title2" value="{{ sustain.title2 }}">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row"> 
+                                    <div class="col-sm-12">
+                                      <div class="mb-3">
+                                        <label for="siteDescriptionInput">First Paragraph of the Second Content:</label>
+                                        <textarea class="form-control" id="content1" rows="5" name="content21">{{ sustain.content21 }}</textarea>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row"> 
+                                    <div class="col-sm-12">
+                                      <div class="mb-3">
+                                        <label for="siteDescriptionInput">Second Paragraph of the Second Content:</label>
+                                        <textarea class="form-control" id="content12" rows="5" name="content22">{{ sustain.content22 }}</textarea>
+                                      </div>
+                                    </div>
+                                  </div>
+                                 
+                                  <div class="row"> 
+                                    <div class="col-sm-12">
+                                      <div class="mb-3">
+                                        <label for="siteDescriptionInput" class="mb-2" >Second Content Image:</label><br>
+                                        <input type="file" class=" form-control form-control-file" id="image2" name="image2">
+                                        <p class="mt-2">Currently: <span class="text-info">{{ sustain.image2 }}</span></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-sm-12 text-end">
+                                        <button class="btn btn-secondary" type="submit" >Update</button>
+                                    </div>
+                                </div>
+                                </div>
+                              </form>
+
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+
+              </div>
+          </div>
+         
+              <div class="row bg-row">
+                  <div class="col-md-5 col-lg-5 pocket-help">
+                      <h2>Ask pocket Friendly for Help 24/7</h2>
+                      <h6>Get In Touch : </h6>
+                    
+                      <div class="number-block"> <a href="tel:+ +971 585893348"> +971585893348 </a>  
+                         </div>
+                      </div>
+              </div>
+              </div>
+        
+
+ 
+</div>
+</div>
+</div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'aboutuspagecontent.html'%}
+{% load static %}
+{% get_static_prefix as dir %}
+{% block content %}
+<!-- End Sidebar Modal -->
+
+                <div class="dashboard-innerbox">
+                            <div class="inner-page-sec">
+                              <div class="description-sec">
+                                <h2>Create Carousal</h2>
+                                <div class="row">
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                      {% if message.tags == 'success' %}
+                                        <div class="alert alert-success" role="alert">
+                                          {{ message }}
+                                        </div>
+                                      {% elif message.tags == 'error' %}
+                                        <div class="alert alert-danger" role="alert">
+                                          {{ message }}
+                                        </div>
+                                      {% endif %}
+                                    {% endfor %}
+                                  {% endif %}
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="inner-card">
+                                            <div class="inner-card-body">
+                                                <div class="product-info">
+                                                    <h5>Carousal</h5>
+                                                  
+                                                    <form id="form4"method="post" enctype="multipart/form-data" action="{% url 'create_carousal'%}">
+                                                      {% csrf_token %}
+                                                        <div class="product-group">
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Carousal Heading:</label>
+                                                                <input type="text" id="title" name="title" class="form-control" required placeholder="Enter carousel title" value="{{ request.POST.title }}">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label"> Carousal Content:</label>
+                                                                <textarea id="content" name="content" class="form-control" required placeholder="Enter carousel Content">{{ request.POST.content }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                           
+                                                          <div class="row">
+                                                            <div class="col-sm-12 text-end">
+                                                                <button class="btn btn-secondary mx-3" type="submit" >Add</button><a href="{% url 'carousal_list_table' %}" class="btn btn-secondary" type="submit" >Update</a>
+                                                            </div></div>
+                                                        </div>
+                                                      </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                            </div>
+                           
+                                <div class="row bg-row">
+                                    <div class="col-md-5 col-lg-5 pocket-help">
+                                        <h2>Ask Pocket Friendly for Help 24/7</h2>
+                                        <h6>Get In Touch : </h6>
+                                      
+                                        <div class="number-block"> <a href="tel:+ +971 585893348"> +971585893348 </a>  
+                                           </div>
+                                        </div>
+                                </div>
+                                </div>
+                          
+              
+                   
+              </div>
+              </div>
+			</div>
+		</section>
+		<!-- End Sign In Area -->
+{% endblock %}

@@ -1,0 +1,282 @@
+{% extends 'index.html' %}
+{% block title %}{{ obj.0.sitename }}{% endblock %}
+{% block content %}
+	<body>
+		<style>.swiper-wrapper [class^="swiper-button-next"]{
+			color:grey;
+		}</style>
+		<!-- header area start here -->
+		<header class="header-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2">
+						<div class="logo-area">
+							<a href="{% url 'index' %}"><img src="{{obj.0.sitelogo.url}}" alt="logo"></a>
+						</div>
+					</div>
+					<div class="col-lg-10">
+						<div class="menu-ara text-right">
+							<nav class="main-menu">
+								<ul>
+									<li class="sub-item"><a href="{% url 'index' %}">HOME</a>
+									
+									</li>
+									<li ><a href="{% url 'aboutus' %}">ABOUT US</a></li>
+									<li class="active"><a href="{% url 'product' %}">PRODUCTS</a></li>
+									<li><a href="{% url 'blog' %}">BLOG </a></li>
+									<li><a href="{% url 'download' %}">DOWNLOADS</a></li>
+									<li><a href="{% url 'contact' %}">CONTACT</a></li>
+									<!-- <li><a href="#">|</a></li> -->
+									<!-- <li><a href="#" class="icon-sec"><i class="fa fa-user"></i></a></li> -->
+									<li><a href="mailto:{{obj.0.primaryemail}}" class="icon-sec"><i class="fa fa-envelope"></i></a></li>
+									<!-- <li><a href="#" class="icon-sec"><i class="fa fa-search"></i></a></li> -->
+									
+								</ul>
+							</nav>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</header>
+	<!--start-product -page section-->
+	
+
+	<div class="product-details-section">
+		<div class="container">
+			<div class="portfolio-details">
+				<div class="row gy-4">
+					<div class="col-lg-6" data-aos="fade-right">
+						<div class="swiper-container gallery-top" style="margin-bottom: 15px;">
+							<div class="swiper-wrapper">
+								<!-- Check if product.images1 exists and loop through images -->
+								{% if product.image1.all %}
+									{% for image in product.image1.all %}
+										<div class="swiper-slide" style="background-image: url('{{ image.file.url }}')"></div>
+									{% endfor %}
+								{% else %}
+									<div class="swiper-slide">
+										<p>No images available</p>
+									</div>
+								{% endif %}
+							</div>
+							<!-- Add Arrows -->
+							<div class="swiper-button-next swiper-button-dark"></div>
+							<div class="swiper-button-prev swiper-button-dark"></div>
+						</div>
+						<div class="swiper-container gallery-thumbs">
+							<div class="swiper-wrapper">
+								<!-- Check if product.image1 exists and loop through images -->
+								{% if product.image1.all %}
+									{% for image in product.image1.all %}
+										<div class="swiper-slide" style="background-image: url('{{ image.file.url }}')"></div>
+									{% endfor %}
+								{% else %}
+									<div class="swiper-slide">
+										<p>No images available</p>
+									</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+		
+			
+	
+		<div class="col-lg-1 col-md-1"></div>
+
+		<!--<div class="col-lg-6" data-aos="fade-right">
+				<div class="slide-product owl-carousel">
+				  {% if product.image1.all %}
+					{% for image in product.image1.all %}
+					  <div class="single-product">
+						<img src="{{ image.file.url }}" alt="Product Image">
+					  </div>
+					{% endfor %}
+				  {% else %}
+					<p>No images available</p>
+				  {% endif %}
+				</div>-->	
+				<!--
+				<div class="row">
+					<div class="col-md-4">
+						<div class="product-tumb-img">
+							{% if product.displayimage1 %}
+							<img src="{{product.displayimage1.url}}">
+							{% else %}
+							<p>No image available</p>
+						{% endif %}
+
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="product-tumb-img">
+							{% if product.displayimage2 %}
+							<img src="{{product.displayimage2.url}}">
+							{% else %}
+							<p>No image available</p>
+						{% endif %}
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="product-tumb-img">
+							{% if product.displayimage3 %}
+							<img src="{{product.displayimage3.url}}">
+							{% else %}
+							<p>No image available</p>
+						{% endif %}
+						</div>
+					</div>
+				</div>
+				-->
+			
+			
+			
+
+				<div class="col-lg-5 " data-aos="fade-left">
+		
+					<div class="section-title product-specification">
+						<h2>Product Specifications</h2>
+					</div>
+
+				<div class="portfolio-info">
+					<h2>{{ product.title }}</h2>
+					<p class="border-bottom">{{ product.model_name }}</p>
+					<h3>Watts</h3>
+					<p>{{ product.watts }}</p>
+					<h3>CCT</h3>
+					<p>{{ product.cct }}</p>
+					<h3>Dimmable System</h3>
+					<p>{{ product.dimmable_system }}</p>
+					<h3>Fixing</h3>
+					<p>{{ product.fixing }}</p>
+					<h3>Lumen Efficiency</h3>
+					<p>{{ product.lumen_efficiency }}</p>
+					<h3>LED Source</h3>
+					<p>{{ product.led_source }}</p>
+					<h3>IP Rating</h3>
+					<p>{{ product.ip_rating }}</p>
+					<h3>Life Span</h3>
+					<p>{{ product.life_span }}</p>
+				</div>
+</div>
+</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+					<div class="product-description">
+						
+						<div class="section-title">
+							<h2>Product Description</h2>
+						</div>
+						
+						<p>
+							{{product.product_description}}
+						</p>
+						<div class="btn-sec">
+							{% if product.data_sheet %}
+								<a href="{{ product.data_sheet.url }}" class="quick-view mr-30" target="_blank">Data Sheet</a>
+							{% else %}
+								<a href="#" class="quick-view mr-30">Data Sheet</a>
+							{% endif %}
+						
+							{% if product.ldf_file %}
+								<a href="{{ product.ldf_file.url }}" class="quick-view" target="_blank">LDF FILE</a>
+							{% else %}
+								<a href="#" class="quick-view">LDT FILE</a>
+							{% endif %}
+						</div>
+						
+					</div>
+					</div>
+					</div>
+				
+			</div>
+
+		</div>
+	</div>
+
+
+
+</div>
+</div>
+
+<!-- footer area start here -->
+<footer class="footer-area">
+	<div class="footer-top">
+		<div class="container" data-aos="fade-up">
+			
+			<div class="row">
+				<div class="col-lg-3 col-md-6 footer-contact">
+					<h4>Address</h4>
+
+					<p>
+						{{obj.0.address1}} <br>
+						{{obj.0.address2}} {{obj.0.city}}<br>
+						{{obj.0.country}} {{obj.0.zipcode}}<br><br>
+					   <strong><i class="fa fa-envelope"></i></strong> {{obj.0.primaryemail}}<br>
+					   &nbsp; &nbsp;&nbsp; {{obj.0.secondaryemail}}
+					</p>
+				</div>
+
+				<div class="col-lg-5 col-md-5 footer-links pright-50 about-footer">
+					<h4>About AXOM </h4>
+					<p>{{obj.0.sitedescription}}</p>
+				</div>
+
+
+   
+				<div class="col-lg-4 col-md-6 footer-links">
+					<h4>Subscribe to our newsletter</h4>
+					<form method="post">
+						{% csrf_token %}
+						<div class="theme-input-group">
+							<input type="email" name="email" placeholder="Your Email" required>
+							<button type="submit"><i class="fa fa-arrow-right"></i></button>
+						</div>
+					</form>
+		
+					 
+				
+					<div class="row">
+						<div class="col-lg-6 col-md-6">
+				
+					<div class="social-links ">
+						<h4>Follow Us On</h4>
+							<a href="{{ obj.0.facebookurl }}" class="twitter" target="_blank"><i class="bi bi-facebook"></i></a>
+							<a href="{{ obj.0.instagramurl }}" class="facebook" target="_blank"><i class="bi bi-instagram"></i></a>
+							<a href="{{ obj.0.twitterurl }}" class="instagram" target="_blank"><i class="bi bi-twitter"></i></a>
+							<a href="{{ obj.0.linkedinurl }}" class="google-plus" target="_blank"><i class="bi bi-linkedin" target="_blank"></i></a>
+						
+						</div> 
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="logo-sec">
+						<img src="{{obj.0.sitelogo.url}}" class="footer-logo mtop-15">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+	<div class="footer-bottom clearfix">
+		<div class="container">
+			<div class="copyright">
+				<p>© Copyright 2023 axomlights. All right reserved.</p>
+			</div>
+			<div class="credits ">
+				<a href="#">
+					Terms of Use |
+
+				</a>
+				<a href="#">Privacy Policy |</a>
+				<a href="#">Contact</a>
+			</div>
+		</div>
+	</div>
+</footer>
+	<!--end-product slider section-->
+	
+	<!-- new-arival area start here -->
+	{% endblock %}

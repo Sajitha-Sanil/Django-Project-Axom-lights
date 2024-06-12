@@ -1,0 +1,479 @@
+{% load static %}
+{% get_static_prefix as dir %}
+<!doctype html>
+<html lang="zxx">
+    <head>
+        <!-- Required Meta Tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{{dir}}adminassets/css/bootstrap.min.css"> 
+        <!-- Owl Carousel CSS -->
+        <link rel="stylesheet" href="{{dir}}adminassets/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="{{dir}}adminassets/css/owl.carousel.min.css">
+        <!-- Magnific Popup CSS -->
+        <link rel="stylesheet" href="{{dir}}adminassets/css/magnific-popup.min.css">
+        <!-- Animate Min CSS -->
+        <link rel="stylesheet" href="{{dir}}adminassets/css/animate.min.css">
+        <!-- Boxicons CSS --> 
+        <link rel="stylesheet" href="{{dir}}adminassets/css/boxicons.min.css">
+        <!-- Flaticon CSS -->
+        <link rel="stylesheet" href="{{dir}}adminassets/fonts/flaticon.css">
+        <!-- Meanmenu CSS -->
+        <link rel="stylesheet" href="{{dir}}adminassets/css/meanmenu.min.css">
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="{{dir}}adminassets/css/style.css">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="{{dir}}adminassets/css/responsive.css">
+        <!-- Theme Dark CSS -->
+        <link rel="stylesheet" href="{{dir}}adminassets/css/theme-dark.css">
+
+        <!-- Title -->
+        <title>Axom Lights - Dashboard</title>
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="{{obj.0.browsersitelogo.url}}">
+    </head>
+
+    <body>
+
+        <!-- Start Preloader -->
+        <div class="preloader">
+            <div class="preloader-wave"></div>
+        </div>
+        <!-- End Preloader -->
+
+
+      
+
+        <!-- Start Sign In Area -->
+		<section class="sign-in-area ptb-50">
+			<div class="container">
+              <div class="dashboard-bgarea">
+                <div class="dashboard-innerbox">
+                    <div class="row">
+                        
+  
+                        <div class="col-lg-12">
+                               <!-- ======= Sidebar ======= -->
+   <div class="other-side">
+    
+
+    <div class="modal-menu">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#myModal2">
+            <i class="flaticon-menu"></i>
+        </a>
+    </div>
+</div>
+
+ 
+ <!-- Start Sidebar Modal -->
+ <div class="sidebar-modal">  
+    <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="bx bx-x"></i>
+                        </span>
+                    </button>
+                    <h2 class="modal-title" id="myModalLabel2">
+                        <a href="index.html">
+                            <img src="{{dir}}adminassets/img/logo.png" class="modal-logo1" alt="Logo">
+                        </a>
+                    </h2>
+                </div>
+                
+                <div class="modal-body" id="navbarSupportedContent">
+                    <nav class="sidebar card py-2 mb-4">
+                        <ul class="nav-links">
+                            <li>
+                              <a href="{% url 'dashboard' %}">
+                                <i class='bx bx-grid-alt' ></i>
+                                <span class="link_name">Dashboard</span>
+                              </a>
+                             
+                            </li>
+                            <li>
+                              <div class="iocn-link">
+                                <a href="#">
+                                  <i class='bx bx-collection' ></i>
+                                  <span class="link_name">Core Content</span>
+                                </a>
+                                <i class='bx bxs-chevron-down arrow' ></i>
+                              </div>
+                              <ul class="sub-menu">
+                                <li><a class="link_name" href="#">Category</a></li>
+                                <li><a href="{% url 'site_primary_info' %}">Primary Info / Logo & Favicon </a></li>
+                                <li><a href="{% url 'site_address_info' %}">Site Address Info </a></li>
+                                <li><a href="{% url 'contact_emails'%}">Site Emails / Contact Deatils </a></li>
+                                <li><a href="{% url 'update_seotags' %}">Social Media Links / Meta Tages</a></li>
+                                <li><a href="{% url 'update_style' %}">Google Analytics Code / CSS & Js</a></li>
+                              </ul>
+                            </li>
+                            <li>
+                              <div class="iocn-link">
+                                <a href="#">
+                                  <i class='bx bx-book-alt' ></i>
+                                  <span class="link_name">Page Content</span>
+                                </a>
+                                <i class='bx bxs-chevron-down arrow' ></i>
+                              </div>
+                              <ul class="sub-menu">
+                                <li><a class="link_name" href="#">Posts</a></li>
+                                <li><a href="{% url 'create_carousal' %}">Carousel</a></li>
+                                <li><a href="{% url 'homepage' %}">Home Page</a></li>
+                                <li><a href="{% url 'About_Us' %}">About Us</a></li>
+                                <li><a href="{% url 'update_sustainability_content' %}">Sustainability Page</a></li>
+                                <li><a href="{% url 'blog_Page' %}">Blog Page</a></li>
+                                <li><a href="{% url 'Download_Page' %}">Download Page</a></li>
+                               <!--<li><a href="{% url 'map_input' %}">Contact Page</a></li>--> 
+                               
+                              </ul>
+                            </li>
+                        
+                          
+                            <li>
+                              <div class="iocn-link">
+                                <a href="#">
+                                  <i class='bx bx-plug' ></i>
+                                  <span class="link_name">Add Category</span>
+                                </a>
+                                <i class='bx bxs-chevron-down arrow' ></i>
+                              </div>
+                              <ul class="sub-menu">
+                                <li><a class="link_name" href="#">Plugins</a></li>
+                                <li><a href="{% url 'product_category' %}">Add Category</a></li>
+                                <li><a href="{% url 'sub_category' %}">Add Sub Category</a></li>
+                              
+                              </ul>
+                            </li>
+                            <li>
+                              <div class="iocn-link">
+                                <a href="#">
+                                  <i class='bx bx-compass' ></i>
+                                  <span class="link_name">Product</span>
+                                </a>
+                                <i class='bx bxs-chevron-down arrow' ></i>
+                              </div>
+                              <ul class="sub-menu">
+                                <li><a class="link_name" href="#">Plugins</a></li>
+                                <li><a href="{% url 'product_list' %}">All Products</a></li>
+                                <li><a href="{% url 'product_page' %}">Add Product</a></li>
+                                
+                              
+                              </ul>
+                            </li>
+                            <li>
+                              <div class="iocn-link">
+                                <a href="#">
+                                  <i class='bx bx-compass' ></i>
+                                  <span class="link_name">Blog</span>
+                                </a>
+                                <i class='bx bxs-chevron-down arrow' ></i>
+                              </div>
+                              <ul class="sub-menu">
+                                <li><a class="link_name" href="#">Plugins</a></li>
+                                <li><a href="{% url 'blog_list' %}">All Blogs</a></li>
+                                <li><a href="{% url 'addblog' %}">Add Blog</a></li>
+                                
+                              
+                              </ul>
+                            </li>
+                            <li>
+                              <a href="{% url 'contact_us_list'%}">
+                                <i class='bx bx-history'></i>
+                                <span class="link_name">Customer Enquiries</span>
+                              </a>
+                            
+                            </li>
+                        
+                      </ul>
+                        </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Sidebar Modal -->
+{% block content %}
+<!-- End Sidebar Modal -->
+
+                <div class="dashboard-innerbox">
+                            <div class="inner-page-sec">
+                              <div class="description-sec">
+                                <h2>Update About Page</h2>
+                                <div class="row">
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                      {% if message.tags == 'success' %}
+                                        <div class="alert alert-success" role="alert">
+                                          {{ message }}
+                                        </div>
+                                      {% elif message.tags == 'error' %}
+                                        <div class="alert alert-danger" role="alert">
+                                          {{ message }}
+                                        </div>
+                                      {% endif %}
+                                    {% endfor %}
+                                  {% endif %}
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="inner-card">
+                                            <div class="inner-card-body">
+                                                <div class="product-info">
+                                                    <h5>About Page</h5>
+                                                  
+                                                    <form id="form4"method="post" enctype="multipart/form-data" action="{% url 'About_Us' %}">
+                                                      {% csrf_token %}
+                                                        <div class="product-group">
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">First Content Title:</label>
+                                                                <input type="text" class="form-control" id="title1" name="title1" value="{{ aboutusobj.title1 }}">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">First Paragraph of the First Content:</label>
+                                                                <textarea class="form-control" id="content1" rows="5" name="content11">{{ aboutusobj.content11 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">First Paragraph of the Second Content:</label>
+                                                                <textarea class="form-control" id="content12" rows="5" name="content12">{{ aboutusobj.content12 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Image of First Content:</label>
+                                                                <input type="file" class="form-control form-control-file" id="image1" name="image1"><br>
+                                                                <p >Currently: <span class="text-info">{{ aboutusobj.image1 }}</span></p>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Second Content Title:</label>
+                                                                <input type="text" class="form-control" id="title2" name="title2" value="{{ aboutusobj.title2 }}">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">First Paragraph of the Second Content:</label>
+                                                                <textarea class="form-control" id="content2" rows="5" name="content2">{{ aboutusobj.content2 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Third Content Title:</label>
+                                                                <input type="text" class="form-control" id="title3" rows="5" name="title3" value="{{ aboutusobj.title3 }}">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">First Paragraph of the Third Content:</label>
+                                                                <textarea class="form-control" id="content3"  rows="5" name="content3">{{ aboutusobj.content3 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Image of Third Content:</label>
+                                                                <input type="file" class="form-control form-control-file" id="image4" name="image4"><br>
+                                                                <p >Currently: <span class="text-info">{{ aboutusobj.image4 }}</span></p>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          
+                                                          <div class="row">
+                                                            <div class="col-sm-12 text-end">
+                                                                <button class="btn btn-secondary mx-3" type="submit" >Update</button>
+                                                            </div></div>
+                                                        </div>
+                                                      </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                            </div>
+                           
+                                <div class="row bg-row">
+                                    <div class="col-md-5 col-lg-5 pocket-help">
+                                        <h2>Ask Pocket Friendly for Help 24/7</h2>
+                                        <h6>Get In Touch : </h6>
+                                      
+                                        <div class="number-block"> <a href="tel:+ +971 585893348"> +971585893348 </a>  
+                                           </div>
+                                        </div>
+                                </div>
+                                </div>
+                          
+              
+                   
+              </div>
+              </div>
+			</div>
+		</section>
+		<!-- End Sign In Area -->
+{% endblock %}
+ <!-- Footer Area -->
+ <footer id="footer" class="footer-area-bg">
+  
+
+  <div class="footer-area-top">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-3 col-md-6">
+                  <div class="footer-single">
+                      <div class="footer-single-content">
+                          <a href="#">
+                              <img src="{{dir}}adminassets/img/footer-logo.png" alt="Logo">
+                          </a>
+                          <div class="share-icon">
+                              <img src="{{dir}}adminassets/img/share-icon.png">
+
+                              <!-- <div class="share-icon">
+                                        <ul class="social-icon-part">
+                                            <li><a href="#"><img src="{{dir}}adminassets/img/whatsapp.png"></a></li>
+                                            <li><a href="#"><img src="{{dir}}adminassets/img/linked-in.png"></a></li>
+                                            <li><a href="#"><img src="{{dir}}adminassets/img/youtube-icon.png"></a></li>
+                                        </ul>
+                                        <ul class="social-icon-part">
+                                            <li><a href="#"><img src="{{dir}}adminassets/img/facebook-icon.png"></a></li>
+                                            <li><a href="#"><img src="{{dir}}adminassets/img/insta-icon.png"></a></li>
+                                            <li><a href="#"><img src="{{dir}}adminassets/img/twitter.png"></a></li>
+                                        </ul>
+                                    </div>-->
+                          </div>
+                         
+                      </div>
+
+                    
+                  </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6">
+                  <div class="footer-list ml-50">
+                      <h3>About Us</h3>
+                    <p>POCKET FRIENDLY delivers comprehensive, professional one-page websites for businesses of all sizes at an affordable cost.</p>
+                    <p class="pt-30 ">Affordable website solutions for startups, small businesses, and enterprises. Tailored to meet specific needs, expand online presence, and foster customer engagement. Transparent pricing, no hidden fees.</p>
+
+                  </div>
+              </div>
+
+              <div class="col-lg-2 col-md-6">
+                  <div class="footer-list">
+                      <h3>Quick Links</h3>
+                      <ul>
+                          <li>
+                              <i class='bx bxs-chevron-right'></i>
+                              <a href="#">Home</a>
+                          </li>
+                          <li>
+                              <i class='bx bxs-chevron-right'></i>
+                              <a href="#">SEO</a>
+                          </li>
+                          <li>
+                              <i class='bx bxs-chevron-right'></i>
+                              <a href="#">Contact Us</a>
+                          </li>
+                          <li>
+                              <i class='bx bxs-chevron-right'></i>
+                              <a href="#">Terms & Condition</a>
+                          </li>
+                          <li>
+                              <i class='bx bxs-chevron-right'></i>
+                              <a href="#">Privacy & Policy</a>
+                          </li>
+                          <li>
+                              <i class='bx bxs-chevron-right'></i>
+                              <a href="#">Careers</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                  <div class="footer-list ml-20">
+                      <h3>Contact Us</h3>
+                      <ul>
+                          <li>
+                              <i class='bx bxs-map'></i>
+                                Sharjah, UAE
+                          </li>
+                          <li>
+                              <i class='bx bxs-phone'></i>
+                              <a href="tel:+971 585893348">+971 585893348</a>
+                          </li>
+                          <li>
+                              <i class='bx bx-envelope'></i>
+                              <a href="mailto:info@pocketfriendlyweb.com">info@pocketfriendlyweb.com</a>
+                          </li>
+                        
+                          
+                      </ul>
+
+                      
+                  </div>
+              </div>
+              <div class="copyright-text">
+                  <p>
+                    © Copyright by PocketFriendlyWeb | <script>document.write(new Date().getFullYear())</script>  
+                   
+                  </p>
+              </div>
+           
+          </div>
+      </div>
+  </div>
+
+  
+</footer>
+<!-- Footer Area End -->
+
+
+<!-- Jquery Min JS -->
+<script src="{{dir}}adminassets/js/jquery.min.js"></script>
+<!-- Bootstrap Bundle Min JS -->
+<script src="{{dir}}adminassets/js/bootstrap.bundle.min.js"></script>
+<!-- Meanmenu JS -->
+<script src="{{dir}}adminassets/js/meanmenu.min.js"></script>
+<!-- Owl Carousel JS -->
+<script src="{{dir}}adminassets/js/owl.carousel.min.js"></script>
+<!-- Magnific Popup JS -->
+<script src="{{dir}}adminassets/js/jquery.magnific-popup.min.js"></script>
+<!-- Wow JS -->
+<script src="{{dir}}adminassets/js/wow.min.js"></script>
+<!-- Ajaxchimp Min JS -->
+<script src="{{dir}}adminassets/js/jquery.ajaxchimp.min.js"></script>
+<!-- Form Validator Min JS -->
+<script src="{{dir}}adminassets/js/form-validator.min.js"></script>
+<!-- Contact Form JS -->
+<script src="{{dir}}adminassets/js/contact-form-script.js"></script>
+<!-- Custom JS -->
+<script src="{{dir}}adminassets/js/custom.js"></script>
+</body>
+</html>

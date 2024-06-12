@@ -1,0 +1,262 @@
+{% extends 'index.html' %}
+{% block title %}{{ obj.0.sitename }}{% endblock %}
+{% block content %}
+	<body>
+		<!-- header area start here -->
+		<header class="header-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2">
+						<div class="logo-area">
+							<a href="{% url 'index' %}"><img src="{{obj.0.sitelogo.url}}" alt="logo"></a>
+						</div>
+					</div>
+					<div class="col-lg-10">
+						<div class="menu-ara text-right">
+							<nav class="main-menu">
+								<ul>
+									<li class="sub-item"><a href="{% url 'index' %}">HOME</a>
+									
+									</li>
+									<li><a href="{% url 'aboutus' %}">ABOUT US</a></li>
+									<li class="active"><a href="{% url 'product' %}">PRODUCTS</a></li>
+									<li ><a href="{% url 'blog' %}">BLOG </a></li>
+									<li><a href="{% url 'download' %}">DOWNLOADS</a></li>
+									<li><a href="{% url 'contact' %}">CONTACT</a></li>
+									<!-- <li><a href="#">|</a></li> -->
+									<!-- <li><a href="#" class="icon-sec"><i class="fa fa-user"></i></a></li> -->
+									<li><a href="mailto:{{obj.0.primaryemail}}" class="icon-sec"><i class="fa fa-envelope"></i></a></li>
+									<!-- <li><a href="#" class="icon-sec"><i class="fa fa-search"></i></a></li> -->
+									
+								</ul>
+							</nav>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</header>
+	<!--start-product -page section-->
+	
+	<div class="product-page">
+		<div class="product-breadcrumb">
+			<div class="container">
+				<div class="product-details-tab">
+					<nav style="--bs-breadcrumb-divider: '>';">
+						
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#">Product</a></li>
+								{% if subcategory.is_active %}
+								<li class="breadcrumb-item"><a href="#">{{ product_category.product_category }}</a></li>
+								<li class="breadcrumb-item active">{{ subcategory.name }}</li>
+								{% endif %}
+							</ol>
+					
+					</nav>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="second-tab">
+		<div class="container">
+			<div class="right-tab">
+				<ul class="nav nav-pills navbar-right" id="pills-tab" role="tablist">
+					{% for category in procat %}
+						{% if category.is_active %}
+							<li class="nav-item dropdown" role="presentation">
+								<button class="nav-link category-button" data-category="{{ category.id }}" type="button" role="tab" aria-controls="pills-category{{ category.id }}">{{ category.product_category }} <i class="fa fa-caret-right"></i></button>
+								<ul>
+									{% for subcategory in category.subcategory_set.all %}
+										{% if subcategory.is_active %}
+											<li><a href="{% url 'subcategory_details' slug=subcategory.slug %}">{{ subcategory.name }}</a></li>
+										{% endif %}
+									{% endfor %}
+								</ul>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+				
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="product-tab-view">
+		<div class="container">
+			
+			<div class="product-tab-sec">
+				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link tab-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="false" tabindex="-1">Categories<i class="fa fa-caret-right"></i></button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link tab-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" tabindex="-1">Watts <i class="fa fa-caret-right"></i></button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link tab-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" tabindex="-1">Finish <i class="fa fa-caret-right"></i></button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link tab-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" tabindex="-1">Fixing <i class="fa fa-caret-right"></i></button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link tab-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" tabindex="-1">IP Rating <i class="fa fa-caret-right"></i></button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link tab-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" tabindex="-1">LED Source<i class="fa fa-caret-right"></i></button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link tab-link active" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="true">More Filter <i class="fa fa-caret-right"></i></button>
+					</li>
+
+				</ul>
+
+
+			</div>
+		</div>
+		</div>
+<div class="product-details-area">
+	<div class="container">
+	<div class="section-title">
+		{% if subcategory.is_active %}
+		<h2>{{ subcategory.name }}</h2>
+	</div>
+	<p>{{ subcategory.description }}</p>
+	{% endif %}
+
+	<div class="row mb-50">
+		{% for product in products %}
+		{% if product.subcategory == subcategory and product.subcategory.is_active %}
+		<div class="col-md-3 col-lg-3">
+			<div class="product-box-area">
+				<div class="product-img">
+					{% if product.displayimage1 %}
+										<img src="{{ product.displayimage1.url }}" alt="Product Image">
+									{% else %}
+										<p>No image available</p>
+									{% endif %}
+			
+				<div class="product-details">
+					<h4>{{ product.title }}</h4>
+					<p>{{ product.model_name }}</p>
+				</div>
+				<div class="view-btn">
+					<a href="{% url 'productdetail' slug=product.slug %}">Read More</a>
+
+				</div>
+			</div>
+		</div>	</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+	
+	
+
+
+	<div class="row">
+		<div class="col-md-12 col-lg-12 text-center">
+			<div class="pagination">
+				{% if page_obj.paginator.num_pages > 1 %}
+					{% if page_obj.has_previous %}
+						<a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+					{% endif %}
+					
+					{% for num in page_obj.paginator.page_range %}
+						{% if page_obj.number == num %}
+							<a class="active" href="?page={{ num }}">{{ num }}</a>
+						{% else %}
+							<a href="?page={{ num }}">{{ num }}</a>
+						{% endif %}
+					{% endfor %}
+					
+					{% if page_obj.has_next %}
+						<a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+	
+<!-- footer area start here -->
+<footer class="footer-area">
+	<div class="footer-top">
+		<div class="container" data-aos="fade-up">
+			
+			<div class="row">
+				<div class="col-lg-3 col-md-6 footer-contact">
+					<h4>Address</h4>
+
+					<p>
+						{{obj.0.address1}} <br>
+						{{obj.0.address2}} {{obj.0.city}}<br>
+						{{obj.0.country}} {{obj.0.zipcode}}<br><br>
+					   <strong><i class="fa fa-envelope"></i></strong> {{obj.0.primaryemail}}<br>
+					   &nbsp; &nbsp;&nbsp; {{obj.0.secondaryemail}}
+					</p>
+				</div>
+
+				<div class="col-lg-5 col-md-5 footer-links pright-50 about-footer">
+					<h4>About AXOM </h4>
+					<p>{{obj.0.sitedescription}}</p>
+				</div>
+
+
+   
+				<div class="col-lg-4 col-md-6 footer-links">
+					<h4>Subscribe to our newsletter</h4>
+					<form method="post" action="{% url 'subscribe_newsletter' %}">
+						{% csrf_token %}
+						<div class="theme-input-group">
+							<input type="email" name="email" placeholder="Your Email" required>
+							<button type="submit"><i class="fa fa-arrow-right"></i></button>
+						</div>
+					</form>
+		
+					 
+				
+					<div class="row">
+						<div class="col-lg-6 col-md-6">
+				
+					<div class="social-links ">
+						<h4>Follow Us On</h4>
+							<a href="{{ obj.0.facebookurl }}" class="twitter" target="_blank"><i class="bi bi-facebook"></i></a>
+							<a href="{{ obj.0.instagramurl }}" class="facebook" target="_blank"><i class="bi bi-instagram"></i></a>
+							<a href="{{ obj.0.twitterurl }}" class="instagram" target="_blank"><i class="bi bi-twitter"></i></a>
+							<a href="{{ obj.0.linkedinurl }}" class="google-plus" target="_blank"><i class="bi bi-linkedin" target="_blank"></i></a>
+						
+						</div> 
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="logo-sec">
+						<img src="{{obj.0.sitelogo.url}}" class="footer-logo mtop-15">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+	<div class="footer-bottom clearfix">
+		<div class="container">
+			<div class="copyright">
+				<p>© Copyright 2023 axomlights. All right reserved.</p>
+			</div>
+			<div class="credits ">
+				<a href="#">
+					Terms of Use |
+
+				</a>
+				<a href="#">Privacy Policy |</a>
+				<a href="#">Contact</a>
+			</div>
+		</div>
+	</div>
+</footer>
+
+	<!--end-product slider section-->
+	
+	{% endblock %}

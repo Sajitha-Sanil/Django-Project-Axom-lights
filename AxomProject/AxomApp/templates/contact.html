@@ -1,0 +1,288 @@
+{% extends 'index.html' %}
+{% block title %}{{ obj.0.sitename }}{% endblock %}
+{% block content %}
+	<body>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+		
+
+		 <!-- Menu For Mobile Device End -->
+		<!-- header area start here -->
+		<header class="header-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2">
+						<div class="logo-area">
+							<a href="{% url 'index' %}"><img src="{{obj.0.sitelogo.url}}" alt="logo"></a>
+						</div>
+					</div>
+					<div class="col-lg-10">
+						<div class="menu-ara text-right">
+							<nav class="main-menu">
+								<ul>
+									<li class="sub-item"><a href="{% url 'index' %}">HOME</a>
+									
+									</li>
+									<li><a href="{% url 'aboutus' %}">ABOUT US</a></li>
+									<li><a href="{% url 'product' %}">PRODUCTS</a></li>
+									<li><a href="{% url 'blog' %}">BLOG </a></li>
+									<li><a href="{% url 'download' %}">DOWNLOADS</a></li>
+									<li class="active"><a href="{% url 'contact' %}">CONTACT</a></li>
+									<!-- <li><a href="#">|</a></li> -->
+									<!-- <li><a href="#" class="icon-sec"><i class="fa fa-user"></i></a></li> -->
+									<li><a href="mailto:{{obj.0.primaryemail}}" class="icon-sec"><i class="fa fa-envelope"></i></a></li>
+									<!-- <li><a href="#" class="icon-sec"><i class="fa fa-search"></i></a></li> -->
+									
+								</ul>
+							</nav>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</header>
+		<style>
+			/* Hide the Leaflet attribution */
+			.leaflet-control-attribution {
+			  display: none !important;
+			}
+		  </style>
+		<div class="product-page">
+			<div class="product-breadcrumb">
+				<div class="container">
+					<div class="product-details-tab">
+						<nav style="--bs-breadcrumb-divider: '>';">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+							
+								<li class="breadcrumb-item active">Contact us</li>
+							</ol>
+						</nav>
+					</div>
+	
+				</div>
+			</div>
+		</div>
+	
+	
+		
+		
+		<!--about-vision- section-->
+	<section>
+		<div class="address-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-12 contact-address">
+						<div class="section-title wow animated fadeInUp" data-wow-duration="2s">
+									<h2>Address</h2>
+								</div>
+								<div class="wow animated fadeInUp" data-wow-duration="2s" > 
+									<p>
+										{{obj.0.address1}} <br>
+										{{obj.0.address2}} {{obj.0.city}}<br>
+										{{obj.0.country}} {{obj.0.zipcode}}<br><br>
+									   <strong><i class="fa fa-envelope"></i></strong> {{obj.0.primaryemail}}<br>
+									   &nbsp; &nbsp;&nbsp; {{obj.0.secondaryemail}}<br>
+									  <strong><i class="fa fa-phone"></i></strong> {{obj.0.primarycontactnumber}}<br>&nbsp;&nbsp;&nbsp;&nbsp;{{obj.0.secondarycontactnumber}}
+									</p>
+							</div>
+					</div>
+				
+					
+				</div>
+				<style>
+					/* Hide unwanted elements */
+					.gmnoprint, .gm-style-cc, .gmnoprint a, .gm-style-cc a {
+						display: none;
+					}
+				
+					/* Adjust height of the iframe container */
+					.map-container {
+						width: 100%;
+						height: 400px;
+						position: relative;
+					}
+				
+					/* Style iframe to fill the container */
+					.map-iframe {
+						width: 100%;
+						height: 100%;
+						position: absolute;
+						top: 0;
+						left: 0;
+					}
+				</style>
+				<div class="row">
+					<div class="col-md-12 col-lg-12 contact-address">
+						<div class="section-title wow animated fadeInUp" data-wow-duration="2s">
+							<h2>Map</h2>
+						</div>
+						<div class="map-img mBot20 wow animated fadeInUp" data-wow-duration="2s">
+							<div id="map" class="map-container">
+								<iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d699.54222924261!2d9.1843417!3d45.4664011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c152cc79e305%3A0x5053ed8b0208b874!2sVia%20Dante%2C%207%2C%2020123%20Milano%20MI%2C%20Italy!5e0!3m2!1sen!2sin!4v1692254122721!5m2!1sen!2sin" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<style>
+					/* Set the map container size */
+					#map {
+						height: 400px;
+						width: 100%;
+					}
+				</style>
+				<style>.alert-success {
+					color: green;
+				}
+				
+				.alert-error {
+					color: red;
+				}</style>
+
+				<div class="row">
+					<div class="col-md-12 col-lg-12 get-in-touch-area">
+						<div class="section-title wow animated fadeInUp" data-wow-duration="2s" >
+							{% for message in contactus_messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+{% endfor %}
+							<h2>Quick Contact</h2>
+						</div>
+						<div class="contact-form-two wow animated fadeInUp" data-wow-duration="2s">
+							<form action="{% url 'contactus' %}" method="post" role="form" enctype="multipart/form-data">
+								{% csrf_token %}
+								<div class="row">
+									<div class="form-group col-12 col-md-6 col-sm-6 col-xl-6">
+										<input type="text" class="form-control" name="name" id="name" placeholder="Enter Your Name" required>
+										<span class="form-icon"><i class="fas fa-user"></i></span>
+									</div>
+									<div class="form-group col-12 col-md-6 col-sm-6 col-xl-6">
+										<input type="email" class="form-control" name="email" id="email" placeholder="Enter Your Mail"required>
+										<span class="form-icon"><i class="fas fa-envelope"></i></span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-12 col-md-6 col-sm-6 col-xl-6">
+										<input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone Number" required>
+										<span class="form-icon"><i class="fas fa-phone"></i></span>
+									</div>
+									<div class="form-group col-12 col-md-6 col-sm-6 col-xl-6">
+										<input type="text" class="form-control" name="company" id="subject" placeholder="Your Subject">
+										<span class="form-icon"><i class="fas fa-pen"></i></span>
+									</div>
+									<div class="form-group col-12 col-md-12 col-sm-12 col-xl-12 message-box">
+									   <textarea name="message" id="message" rows="6" name="message" placeholder="Your Write Message"></textarea>
+									   <span class="form-icon"><i class="fas fa-edit"></i></span>
+									</div>
+								</div>
+								<div class="send-message text-center">
+									<button type="submit" class="btn-send">send message</button>
+								</div>
+								<span class="form-message"></span>
+							</form>
+						</div> 
+					
+					</div>
+				</div>
+
+				
+			</div>
+		</div>
+	</section>
+
+	<!-- footer area start here -->
+	<footer class="footer-area">
+		<div class="footer-top">
+			<div class="container" data-aos="fade-up">
+				
+				<div class="row">
+					<div class="col-lg-3 col-md-6 footer-contact">
+						<h4>Address</h4>
+
+						<p>
+							{{obj.0.address1}} <br>
+							{{obj.0.address2}} {{obj.0.city}}<br>
+							{{obj.0.country}} {{obj.0.zipcode}}<br><br>
+						   <strong><i class="fa fa-envelope"></i></strong> {{obj.0.primaryemail}}<br>
+						   &nbsp; &nbsp;&nbsp; {{obj.0.secondaryemail}}
+						</p>
+					</div>
+
+					<div class="col-lg-5 col-md-5 footer-links pright-50 about-footer">
+						<h4>About AXOM </h4>
+						<p>{{obj.0.sitedescription}}</p>
+					</div>
+
+
+	   
+					<div class="col-lg-4 col-md-6 footer-links">
+						<h4>Subscribe to our newsletter</h4>
+						<form method="post" action="{% url 'contactus_subscribe_newsletter' %}">
+							{% csrf_token %}
+							<div class="theme-input-group">
+								<input type="email" name="email" placeholder="Your Email" required>
+								<button type="submit"><i class="fa fa-arrow-right"></i></button>
+							</div>
+						</form>
+			
+						 
+					
+						<div class="row">
+							<div class="col-lg-6 col-md-6">
+					
+						<div class="social-links ">
+							<h4>Follow Us On</h4>
+								<a href="{{ obj.0.facebookurl }}" class="twitter" target="_blank"><i class="bi bi-facebook"></i></a>
+								<a href="{{ obj.0.instagramurl }}" class="facebook" target="_blank"><i class="bi bi-instagram"></i></a>
+								<a href="{{ obj.0.twitterurl }}" class="instagram" target="_blank"><i class="bi bi-twitter"></i></a>
+								<a href="{{ obj.0.linkedinurl }}" class="google-plus" target="_blank"><i class="bi bi-linkedin" target="_blank"></i></a>
+							
+							</div> 
+					</div>
+					<div class="col-lg-6 col-md-6">
+						<div class="logo-sec">
+							<img src="{{obj.0.sitelogo.url}}" class="footer-logo mtop-15">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+		<div class="footer-bottom clearfix">
+			<div class="container">
+				<div class="copyright">
+					<p>© Copyright 2023 axomlights. All right reserved.</p>
+				</div>
+				<div class="credits ">
+					<a href="#">
+						Terms of Use |
+
+					</a>
+					<a href="#">Privacy Policy |</a>
+					<a href="#">Contact</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+		
+	<!--end-product slider section-->
+	
+	<!-- new-arival area start here -->
+	
+	{% endblock %}

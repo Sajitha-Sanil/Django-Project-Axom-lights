@@ -1,0 +1,164 @@
+{% extends 'index.html' %}
+{% block title %}{{ obj.0.sitename }}{% endblock %}
+{% block content %}
+	<body>
+		<!-- header area start here -->
+		<header class="header-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2">
+						<div class="logo-area">
+							<a href="{% url 'index' %}"><img src="{{obj.0.sitelogo.url}}" alt="logo"></a>
+						</div>
+					</div>
+					<div class="col-lg-10">
+						<div class="menu-ara text-right">
+							<nav class="main-menu">
+								<ul>
+									<li class="sub-item"><a href="{% url 'index' %}">HOME</a>
+									
+									</li>
+									<li ><a href="{% url 'aboutus' %}">ABOUT US</a></li>
+									<li><a href="{% url 'product' %}">PRODUCTS</a></li>
+									<li class="active"><a href="{% url 'blog' %}">BLOG </a></li>
+									<li><a href="{% url 'download' %}">DOWNLOADS</a></li>
+									<li><a href="{% url 'contact' %}">CONTACT</a></li>
+									<!-- <li><a href="#">|</a></li> -->
+									<!-- <li><a href="#" class="icon-sec"><i class="fa fa-user"></i></a></li> -->
+									<li><a href="mailto:{{obj.0.primaryemail}}" class="icon-sec"><i class="fa fa-envelope"></i></a></li>
+									<!-- <li><a href="#" class="icon-sec"><i class="fa fa-search"></i></a></li> -->
+									
+								</ul>
+							</nav>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</header>
+	
+		<!-- about area start here -->
+		<div class="our-blog-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6">
+						<div class="section-title">
+							<h2>{{ blog.blog_description_title }}</h2>
+						</div>
+						<p>{{ blog.blog_description }}</p>
+					</div>
+					<div class="col-lg-6 col-md-6">
+						<div class="blog-img">
+							{% if blog.blog_image %}
+								<img src="{{ blog.blog_image.url }}">
+							{% else %}
+								<p>No image available</p>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		<!--about-vision- section-->
+	<section>
+		<div class="blog-details-area mb-50">
+			<div class="container">
+		
+				<div class="row">
+					<div class="col-md-12 col-lg-12">
+						<div class="blog-img">
+							{% if blog.description_image %}
+						<img src="{{ blog.description_image.url }}">
+						{% else %}
+								<p>No image available</p>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+
+				
+			</div>
+		</div>
+	</section>
+	
+<!-- footer area start here -->
+<footer class="footer-area">
+	<div class="footer-top">
+		<div class="container" data-aos="fade-up">
+			
+			<div class="row">
+				<div class="col-lg-3 col-md-6 footer-contact">
+					<h4>Address</h4>
+
+					<p>
+						{{obj.0.address1}} <br>
+						{{obj.0.address2}} {{obj.0.city}}<br>
+						{{obj.0.country}} {{obj.0.zipcode}}<br><br>
+					   <strong><i class="fa fa-envelope"></i></strong> {{obj.0.primaryemail}}<br>
+					   &nbsp; &nbsp;&nbsp; {{obj.0.secondaryemail}}
+					</p>
+				</div>
+
+				<div class="col-lg-5 col-md-5 footer-links pright-50 about-footer">
+					<h4>About AXOM </h4>
+					<p>{{obj.0.sitedescription}}</p>
+				</div>
+
+
+   
+				<div class="col-lg-4 col-md-6 footer-links">
+					<h4>Subscribe to our newsletter</h4>
+					<form method="post" action="{% url 'subscribe_newsletter' %}">
+						{% csrf_token %}
+						<div class="theme-input-group">
+							<input type="email" name="email" placeholder="Your Email" required>
+							<button type="submit"><i class="fa fa-arrow-right"></i></button>
+						</div>
+					</form>
+		
+					 
+				
+					<div class="row">
+						<div class="col-lg-6 col-md-6">
+				
+					<div class="social-links ">
+						<h4>Follow Us On</h4>
+							<a href="{{ obj.0.facebookurl }}" class="twitter" target="_blank"><i class="bi bi-facebook"></i></a>
+							<a href="{{ obj.0.instagramurl }}" class="facebook" target="_blank"><i class="bi bi-instagram"></i></a>
+							<a href="{{ obj.0.twitterurl }}" class="instagram" target="_blank"><i class="bi bi-twitter"></i></a>
+							<a href="{{ obj.0.linkedinurl }}" class="google-plus" target="_blank"><i class="bi bi-linkedin" target="_blank"></i></a>
+						
+						</div> 
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="logo-sec">
+						<img src="{{obj.0.sitelogo.url}}" class="footer-logo mtop-15">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+	<div class="footer-bottom clearfix">
+		<div class="container">
+			<div class="copyright">
+				<p>© Copyright 2023 axomlights. All right reserved.</p>
+			</div>
+			<div class="credits ">
+				<a href="#">
+					Terms of Use |
+
+				</a>
+				<a href="#">Privacy Policy |</a>
+				<a href="#">Contact</a>
+			</div>
+		</div>
+	</div>
+</footer>
+	{% endblock %}

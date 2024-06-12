@@ -1,0 +1,104 @@
+{% extends 'aboutuspagecontent.html'%}
+{% load static %}
+{% get_static_prefix as dir %}
+{% block content %}
+<!-- End Sidebar Modal -->
+
+                <div class="dashboard-innerbox">
+                            <div class="inner-page-sec">
+                              <div class="description-sec">
+                                <h2>Update Download Page</h2>
+                                <div class="row">
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                      {% if message.tags == 'success' %}
+                                        <div class="alert alert-success" role="alert">
+                                          {{ message }}
+                                        </div>
+                                      {% elif message.tags == 'error' %}
+                                        <div class="alert alert-danger" role="alert">
+                                          {{ message }}
+                                        </div>
+                                      {% endif %}
+                                    {% endfor %}
+                                  {% endif %}
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="inner-card">
+                                            <div class="inner-card-body">
+                                                <div class="product-info">
+                                                    <h5>Download Page</h5>
+                                                  
+                                                    <form id="form4"method="post" enctype="multipart/form-data" action="{% url 'Download_Page' %}">
+                                                      {% csrf_token %}
+                                                        <div class="product-group">
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Heading:</label>
+                                                                <input type="text" class="form-control" id="title" name="title" value="{{downloadobj.title}}">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Description:</label>
+                                                                <textarea class="form-control" id="content" rows="5" name="content">{{downloadobj.content}} </textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Image:</label>
+                                                                <input type="file" class="form-control form-control-file" id="image" name="image">
+                      <p class="mt-2">Currently: <span class="text-info">{{ downloadobj.image }}</span></p>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">File to be downloaded:</label>
+                                                                <input type="file" class="form-control form-control-file" id="data-sheet" name="data_sheet" accept=".pdf">
+                                                                <p class="mt-2">Currently: <span class="text-info">{{ downloadobj.data_sheet }}</span></p>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        
+                                                          
+                                                          <div class="row">
+                                                            <div class="col-sm-12 text-end">
+                                                                <button class="btn btn-secondary mx-3" type="submit" >Update</button>
+                                                            </div></div>
+                                                        </div>
+                                                      </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                            </div>
+                           
+                                <div class="row bg-row">
+                                    <div class="col-md-5 col-lg-5 pocket-help">
+                                        <h2>Ask pocket Friendly for Help 24/7</h2>
+                                        <h6>Get In Touch : </h6>
+                                      
+                                        <div class="number-block"> <a href="tel:+ +971 585893348"> +971585893348 </a>  
+                                           </div>
+                                        </div>
+                                </div>
+                                </div>
+                          
+              
+                   
+              </div>
+              </div>
+			</div>
+		</section>
+		<!-- End Sign In Area -->
+{% endblock %}

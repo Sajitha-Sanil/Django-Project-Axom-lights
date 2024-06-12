@@ -1,0 +1,244 @@
+{% extends 'aboutuspagecontent.html'%}
+{% load static %}
+{% get_static_prefix as dir %}
+{% block content %}
+<!-- End Sidebar Modal -->
+
+                <div class="dashboard-innerbox">
+                            <div class="inner-page-sec">
+                              <div class="description-sec">
+                                <h2>Update Home Page</h2>
+                                {% if messages %}
+                                                    {% for message in messages %}
+                                                      {% if message.tags == 'success' %}
+                                                        <div class="alert alert-success" role="alert">
+                                                          {{ message }}
+                                                        </div>
+                                                      {% elif message.tags == 'error' %}
+                                                        <div class="alert alert-danger" role="alert">
+                                                          {{ message }}
+                                                        </div>
+                                                      {% endif %}
+                                                    {% endfor %}
+                                                  {% endif %}
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="inner-card">
+                                            <div class="inner-card-body">
+                                                <div class="product-info">
+                                                    <h5>Home Page</h5>
+                                                    
+                                                    <form id="form4"method="post" enctype="multipart/form-data" action="{% url 'homepage' %}">
+                                                      {% csrf_token %}
+                                                        <div class="product-group">
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label"> Carousel Background Image:</label><br>
+                                                                <input type="file" class=" form-control form-control-file" id="background_image" name="background_image">
+                                                                    <p class="mt-2">Currently: <span class="text-info">{{ homeobj.background_image }}</span></p>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <hr><hr>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label"> First Content Title:</label>
+                                                                <input type="text" class="form-control" id="id_title" name="title1" value="{{ homeobj.title1 }}">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">First Paragraph of the First Content</label>
+                                                                <textarea class="form-control" id="id_content11" rows="7" name="content11">{{ homeobj.content11 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Second Paragraph of the First Content</label>
+                                                                <textarea class="form-control" id="id_content12" rows="7" name="content12">{{ homeobj.content12 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Image of the First Content</label><br>
+                                                                <input type="file" class="form-control form-control-file" id="id_image1" name="image1">
+                                                                {% if homeobj.image1 %}
+                                                                    <p class="mt-2">Currently: <span class="text-info">{{ homeobj.image1.name }}</span></p>
+                                                                {% endif %}
+                                                              </div>
+                                                            </div>
+                                                          </div>
+
+                                                          <hr><hr>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Second Content Title:</label>
+                                                                    <input type="text" class="form-control" id="id_title" name="title2" value="{{ homeobj.title2 }}">
+                                                                </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">First Paragraph of the Second Content<span class="text-warning"> Maximum length: 70 characters</span></label>
+                                                                <textarea class="form-control" id="id_content21" name="content21" maxlength="70">{{ homeobj.content21 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Second Paragraph of the Second Content<span class="text-warning"> Maximum length: 70 characters</span></label>
+                                                                <textarea class="form-control" id="id_content22"  name="content22" maxlength="70">{{ homeobj.content22 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Image of the Second Content</label><br>
+                                                                <input type="file" class=" form-control form-control-file" id="id_image4" name="image4">
+                                                                {% if homeobj.image4 %}
+                                                                    <p class="mt-2">Currently: <span class="text-info">{{ homeobj.image4.name }}</span></p>
+                                                                {% endif %}
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <hr><hr>
+
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label"> Third Content Title:</label>
+                                                                <input type="text" class="form-control" id="id_title3" name="title3" value="{{ homeobj.title3 }}">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label"> Paragraph of the Third Content</label>
+                                                                <textarea class="form-control" id="id_content3" rows="5" name="content3">{{ homeobj.content3 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                         <hr><hr>
+                                                         <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label"> Fourth Content Title:</label>
+                                                                <input type="text" class="form-control" id="id_title4" name="title4" value="{{ homeobj.title4 }}">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">First Paragraph of the Fourth Content</label>
+                                                                <textarea class="form-control" id="id_content41"  rows="5" name="content41">{{ homeobj.content41 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Second Paragraph of the Fourth Content</label>
+                                                                <textarea class="form-control" id="id_content42" rows="5" name="content42">{{ homeobj.content42 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Image of the Fourth Content</label><br>
+                                                                <input type="file" class="form-control form-control-file" id="id_image8" name="image8">
+                                                                   {% if homeobj.image8 %}
+                                                                            <p class="mt-2">Currently: <span class="text-info">{{ homeobj.image8.name }}</span></p>
+                                                                   {% endif %}
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <hr><hr>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label"> Fifth Content Title:<span class="text-warning"> Maximum length: 22 characters</span></label>
+                                                                <input type="text" class="form-control" id="id_title5" name="title5" maxlength="22" value="{{ homeobj.title5 }}">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">First Paragraph of the Fifth Content<span class="text-warning"> Maximum length: 75 characters</span></label>
+                                                                <textarea class="form-control" id="id_content51"  name="content51" maxlength="75">{{ homeobj.content51 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Second Paragraph of the Fifth Content<span class="text-warning"> Maximum length: 75 characters</span></label>
+                                                                <textarea class="form-control" id="id_content52"  maxlength="75" name="content52">{{ homeobj.content52 }}</textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label class="form-label">Image of the Fifth Content</label><br>
+                                                                <input type="file" class="form-control form-control-file" id="id_image11" name="image11">
+                  {% if homeobj.image11 %}
+                      <p class="mt-2">Currently: <span class="text-info">{{ homeobj.image11.name }}</span></p>
+                  {% endif %}
+                                                              </div>
+                                                            </div>
+                                                          </div>
+
+
+
+                                                          <div class="row">
+                                                            <div class="col-sm-12 text-end">
+                                                                <button class="btn btn-secondary" type="submit" >Update</button>
+                                                            </div></div>
+                                                        </div>
+                                                      </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                            </div>
+                           
+                                <div class="row bg-row">
+                                    <div class="col-md-5 col-lg-5 pocket-help">
+                                        <h2>Ask Pocket Friendly for Help 24/7</h2>
+                                        <h6>Get In Touch : </h6>
+                                      
+                                        <div class="number-block"> <a href="tel:+ +971 585893348"> +971585893348 </a>  
+                                           </div>
+                                        </div>
+                                </div>
+                                </div>
+                          
+              
+                   
+              </div>
+              </div>
+			</div>
+		</section>
+		<!-- End Sign In Area -->
+{% endblock %}

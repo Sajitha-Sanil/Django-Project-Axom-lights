@@ -1,0 +1,111 @@
+{% extends 'aboutuspagecontent.html'%}
+{% load static %}
+{% get_static_prefix as dir %}
+{% block content %} 
+<!-- End Sidebar Modal -->
+
+                <div class="dashboard-innerbox">
+                            <div class="inner-page-sec">
+                              <div class="description-sec">
+                                <h2>Add Blog</h2>
+                                {% if messages %}
+                                                    {% for message in messages %}
+                                                      {% if message.tags == 'success' %}
+                                                        <div class="alert alert-success" role="alert">
+                                                          {{ message }}
+                                                        </div>
+                                                      {% elif message.tags == 'error' %}
+                                                        <div class="alert alert-danger" role="alert">
+                                                          {{ message }}
+                                                        </div>
+                                                      {% endif %}
+                                                    {% endfor %}
+                                                  {% endif %}
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="inner-card">
+                                            <div class="inner-card-body">
+                                                <div class="product-info">
+                                                    <h5>Add a new blog </h5>
+                                                    
+                                                    <form id="form1" method="post" enctype="multipart/form-data" action="{% url 'addblog' %}">
+                                                      {% csrf_token %}
+                                                        <div class="product-group">
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label for="siteNameInput"  class="mb-2">Blog Display Picture:</label><br>
+                                                                <input type="file" class="form-control form-control-file" id="blog-picture" name="blog_image">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label for="siteDescriptionInput">Blog Picture Caption:</label>
+                                                                <input type="text" class="form-control" id="blog-picture-caption" name="blog_image_caption">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label for="siteDescriptionInput">Blog Description Heading:</label>
+                                                                <input type="text" required class="form-control" id="blog-content-title" name="blog_description_title">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label for="siteDescriptionInput">Blog Description:</label>
+                                                                <textarea class="form-control" id="blog-content" rows="8" name="blog_description"></textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="row"> 
+                                                            <div class="col-sm-12">
+                                                              <div class="mb-3">
+                                                                <label for="siteDescriptionInput" class="mb-2" >Blog Secondary Picture:</label><br>
+                                                               
+                                                                <input type="file" class="form-control form-control-file" id="blog-secondary-picture" name="description_image">
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          
+                                                          <div class="row">
+                                                            <div class="col-sm-12 text-end">
+                                                                <button class="btn btn-secondary mx-3" type="submit" >Add</button>
+                                                            </div></div>
+                                                           
+                                                        </div>
+                                                        </div>
+                                                      </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+              
+                                    <div class="row bg-row">
+                                      <div class="col-md-5 col-lg-5 pocket-help">
+                                          <h2>Ask Pocket Friendly for Help 24/7</h2>
+                                          <h6>Get In Touch : </h6>
+                                        
+                                          <div class="number-block"> <a href="tel:+ +971 585893348"> +971585893348 </a>  
+                                             </div>
+                                          </div>
+                                  </div>
+                                  </div>
+                            
+                
+                     
+                </div>
+                </div>
+        </div>
+      </section>
+              
+		<!-- End Sign In Area -->
+
+        {% endblock %}

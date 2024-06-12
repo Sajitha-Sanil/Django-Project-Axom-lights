@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+{% block title %}{{ obj.0.sitename }}{% endblock %}
+{% block content %}
+	<body>
+		<!-- header area start here -->
+		<header class="header-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2">
+						<div class="logo-area">
+							<a href="{% url 'index' %}"><img src="{{obj.0.sitelogo.url}}" alt="logo"></a>
+						</div>
+					</div>
+					<div class="col-lg-10">
+						<div class="menu-ara text-right">
+							<nav class="main-menu">
+								<ul>
+									<li class="active sub-item"><a href="{% url 'index' %}">HOME</a>
+									
+									</li>
+									<li><a href="{% url 'aboutus' %}">ABOUT US</a></li>
+									<li><a href="{% url 'product' %}">PRODUCTS</a></li>
+									<li><a href="{% url 'blog' %}">BLOG </a></li>
+									<li><a href="{% url 'download' %}">DOWNLOADS</a></li>
+									<li><a href="{% url 'contact' %}">CONTACT</a></li>
+									<!-- <li><a href="#">|</a></li> -->
+									<!-- <li><a href="#" class="icon-sec"><i class="fa fa-user"></i></a></li> -->
+									<li><a href="mailto:{{obj.0.primaryemail}}" class="icon-sec"><i class="fa fa-envelope"></i></a></li>
+
+									<!-- <li><a href="#" class="icon-sec"><i class="fa fa-search"></i></a></li> -->
+								</ul>
+							</nav>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</header>
+		<!-- header area end here -->
+	
+		
+		
+		
+		<!--about-vision- section-->
+	<section>
+		<div class="error-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12">
+						<div class="error-page-sec">
+						<h2>OOPS !</h2>
+						<h2 class="error">404 ERROR</h2>
+						<!-- <img src="{{dir}}assets/images/error.png"/> -->
+						<h1>Page Not Found</h1>
+						<div class="view-btn">
+							<a href="{% url 'index' %}">Back to Home Page</a>
+						</div>
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+	
+		
+	<!--end-product slider section-->
+	
+	<!-- new-arival area start here -->
+	
+		<!-- footer area start here -->
+		{% endblock %}
