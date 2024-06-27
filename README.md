@@ -18,7 +18,7 @@ Bootstrap: For responsive and modern design.
 Pillow: Python Imaging Library (PIL) for image processing tasks.
 
 # How to Use:
-Clone the repository: git clone https://github.com/your-username/winsky-travel-agency.git
+Clone the repository: git clone https://github.com/Sajitha-Sanil/Django-Project-Axom-lights.git
 Install dependencies: pip install -r requirements.txt
 Set up Django environment variables and database configurations.
 Run migrations: python manage.py migrate
